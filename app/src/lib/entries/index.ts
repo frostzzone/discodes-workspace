@@ -10,7 +10,7 @@ import objects from "./Others/Objects";
 import time from "./Others/Time";
 import terminal from "./Others/others";
 import requests from "./Others/requests";
-
+import interactions from "./Interactions"
 import coretest from "./coretest";
 
 export default [
@@ -238,6 +238,13 @@ export default [
                 name: "Interactions",
                 colour: "#d054fc",
                 contents: [
+                    {
+                        id: "universal_int",
+                        kind: "category",
+                        name: "Universal Temp Interaction",
+                        colour: "#00ea34",
+                        contents: interactions
+                    },
                     {
                         id: "slash",
                         kind: "category",
