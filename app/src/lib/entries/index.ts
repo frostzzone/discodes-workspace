@@ -12,7 +12,7 @@ import terminal from "./Others/others";
 import requests from "./Others/requests";
 import interactions from "./Interactions"
 import coretest from "./coretest";
-
+import Messages from "./Discord/Messages"
 export default [
     {
         id: "coretest",
@@ -184,6 +184,7 @@ export default [
                 name: "Messages",
                 colour: "#509cfc",
                 contents: [
+
                     {
                         id: "getmessages",
                         kind: "category",
@@ -303,7 +304,7 @@ export default [
                                 kind: "category",
                                 name: "Text",
                                 colour: "#a85c7c",
-                                contents: []
+                                contents: Messages
                             },
                             {
                                 id: "voice",

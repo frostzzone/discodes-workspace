@@ -34,6 +34,10 @@ const OutputType = {
      * Input type for allowing any blocks inside.
      * Can be used by outputs if needed.
      */
+    Component: ["Button", "button", "Context", "context", "Select", "select"],
+    Channel: ["Channel", "channel"],
+    Embed: ["Embed", "embed"],
+    EventType: ["event_type", "event", "Event", "EventType"],
     ANY: null,
 }
 
