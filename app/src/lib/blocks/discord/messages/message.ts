@@ -26,11 +26,11 @@ export default class DiscordMessage {
                         },
                         EMBEDS: {
                             type: InputShape.VALUE,
-                            check: [...OutputType.ARRAY, ...OutputType.Embed],
+                            check: [...OutputType.ARRAY/*, ...OutputType.Embed*/],
                         },
                         COMPONENTS: {
                             type: InputShape.VALUE,
-                            check: [...OutputType.ARRAY, ...OutputType.Component],
+                            check: [...OutputType.ARRAY/*, ...OutputType.Component*/],
                         },
                         EPHEMERAL: {
                             type: InputShape.CHECKBOX,
@@ -38,6 +38,18 @@ export default class DiscordMessage {
 
 
                     },
+                    tooltip: `
+                    IF YOU USE THE EVENT FIELD THE EVENT FIELD BE COUNTED AND SENT USING THAT
+                    EPHEMERAL WORKS FOR INTERACTION EVENT ONLY
+                    
+                    
+Channel: what channel you want the message to be sent in. This field is not for a channel ID.
+Event: the current event block, for example you use "when slash command is used event", then you put the interaction block in here
+Content: String block field 
+Embeds: A list of embeds
+Components: A list of components
+Ephemeral: if this is checked then the reply will show 
+`,
                 }
             ]
         }
