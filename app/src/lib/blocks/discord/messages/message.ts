@@ -8,17 +8,13 @@ export default class DiscordMessage {
             blocks: [
                 {
                     func: "send",
-                    text: "Send Message in Channel: [CHANNEL]\nEvent: [EVENT]\nContent: [CONTENT]\nEmbeds: [EMBEDS]\nComponents: [COMPONENTS]\nEphemeral: [EPHEMERAL]",
+                    text: "Send Message in Channel or use Event: [CHANNEL]\nContent: [CONTENT]\nEmbeds: [EMBEDS]\nComponents: [COMPONENTS]\nEphemeral: [EPHEMERAL]",
                     inline: false,
                     shape: BlockShape.STATEMENT,
                     arguments: {
                         CHANNEL: {
                           type: InputShape.VALUE,
-                          check: OutputType.Channel
-                        },
-                        EVENT: {
-                            type: InputShape.VALUE,
-                            check: OutputType.EventType,
+                          check: [...OutputType.Channel, ...OutputType.EventType]
                         },
                         CONTENT: {
                             type: InputShape.VALUE,
@@ -43,8 +39,7 @@ export default class DiscordMessage {
                     EPHEMERAL WORKS FOR INTERACTION EVENT ONLY
                     
                     
-Channel: what channel you want the message to be sent in. This field is not for a channel ID.
-Event: the current event block, for example you use "when slash command is used event", then you put the interaction block in here
+Channel or Event field: what channel or use Event(for example interaction event) you want the message to be sent in. This field is not for a channel ID.
 Content: String block field 
 Embeds: A list of embeds
 Components: A list of components
@@ -54,4 +49,18 @@ Ephemeral: if this is checked then the reply will show
             ]
         }
     }
+    send(args: any) {
+        if(!args.CHANNEL) {
+            return "console.error(`INCOMPLETE BLOCK: send message in channel block, CHANNEL OR EVENT IS EMPTY`)"
+        }
+        return `await ${args.CHANNEL}.reply({
+            ephemeral: ${(args.EPHEMERAL as string).toLowerCase()},
+            embeds: ${args.EMBEDS? args.EMBEDS : "[]"},
+            content: ${args.CONTENT? args.CONTENT : '""'}
+            components: ${args.COMPONENTS? args.COMPONENTS : "[]"}
+            allowedMentions: '',
+            files: '',
+        })`
+    }
+
 }
