@@ -1,4 +1,4 @@
-import {BlockShape, InputShape, OutputType} from "$lib/utils/blockRegistryTool";
+import {BlockShape, InputShape, OutputType} from "../../../utils/blockRegistryTool";
 import {inputTypes} from "blockly";
 
 export default class EventInteraction {
@@ -9,7 +9,7 @@ export default class EventInteraction {
             blocks: [
                 {
                     func: "event",
-                    text: "When [EVENT] event ",
+                    text: "When [EVENT] is used\n",
                     inline: true,
                     shape: BlockShape.EVENT,
                     branches: 1,
@@ -17,13 +17,16 @@ export default class EventInteraction {
                         EVENT: {
                             type: InputShape.MENU,
                             options: [
-                                ['context menu is used', 'context'],
-                                ['select menu is used', 'select'],
-                                ['modal is used', 'modal'],
-                                ['slash command is used', 'slash']
+                                ['context menu', 'context'],
+                                ['select menu', 'select'],
+                                ['modal', 'modal'],
+                                ['slash command', 'slash'],
+                                ['any of the interactions', 'universal']
 
                             ],
                         },
+
+
 
 
                     },
@@ -32,7 +35,9 @@ export default class EventInteraction {
         }
     }
     event(args: any) {
-        return `func ${args.EVENT}`
+        return `s4d.client.on(Discord.Events.InteractionCreate, async (interaction) => {
+        ${args.BRANCH1}
+        })`
     }
 
 }

@@ -53,6 +53,7 @@ Ephemeral: if this is checked then the reply will show
         if(!args.CHANNEL) {
             return "console.error(`INCOMPLETE BLOCK: send message in channel block, CHANNEL OR EVENT IS EMPTY`)"
         }
+        args.
         return `await ${args.CHANNEL}.reply({
             ephemeral: ${(args.EPHEMERAL as string).toLowerCase()},
             embeds: ${args.EMBEDS? args.EMBEDS : "[]"},
